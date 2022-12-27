@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            var p = +prompt("Введите число P");
+            var x = +prompt("Введите число X");
+            var m = +prompt("Введите число M");
+            var k = +prompt("Введите число K");
+
+            function primitiveRoot (P, b){
+                console.log(P + "," + b);
+                
+                while (b){
+                num = P % b;
+                P = b;
+                b = num;
+                }
+                if (Math.abs(P) == 1) {
+                console.log(true);
+                return true;
+                }
+            }
+
+            var array = [];
+
+            for(var b = 0; b < P; b++){
+                if(primitiveRoot(P, b)){
+                    array.push(b);
+                }
+            }
+            
+            var degree = array.length;
+            alert(degree);
+
+            for(var g = 2; g < P; g++){
+                var res = g ** degree;
+
+                if(res > P){
+                    if(res % P == 1){
+                        break;
+                    }
+                }else{
+                    if(res == 1){
+                        break;
+                    }
+                }
+            }
+
+            if(1 < X < P){
+                var y = (g**X) % P;
+                alert("Число y "+ y);
+
+                var a = (g**K) % P;
+                alert("число а " + a);
+
+                var b = ((y**K)* M) % P;
+                alert("число b " + b);
+
+                var MM = (b * (a**(P-1-X))) % P;
+            }
+            
+            alert("результат:: "+ MM);
+        </script>
+    </body>
+</html>
